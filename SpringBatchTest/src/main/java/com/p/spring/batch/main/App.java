@@ -1,6 +1,7 @@
 package com.p.spring.batch.main;
 
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -33,14 +34,15 @@ public class App implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		JobParameters params1 = new JobParametersBuilder()
-				.addString("JobID", String.valueOf(System.currentTimeMillis())).addString("Job Name", "First Job")
-				.toJobParameters();
-		jobLauncher.run(job1, params1);
+//		JobParameters params1 = new JobParametersBuilder()
+//				.addString("JobID", String.valueOf(System.currentTimeMillis())).addString("Job Name", "First Job")
+//				.toJobParameters();
+//		jobLauncher.run(job1, params1);
 
 		JobParameters params2 = new JobParametersBuilder()
 				.addString("JobID", String.valueOf(System.currentTimeMillis())).addString("Job Name", "Second Job")
 				.toJobParameters();
-		jobLauncher.run(job2, params2);
+		JobExecution je2=jobLauncher.run(job2, params2);
+		System.out.println("\n ====== \n\nPremendra je2"+je2+"\n ======== \n\n");
 	}
 }

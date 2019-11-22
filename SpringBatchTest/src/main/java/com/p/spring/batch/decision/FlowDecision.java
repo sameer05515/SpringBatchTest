@@ -46,7 +46,7 @@ public class FlowDecision implements JobExecutionDecider {
 			Random generator = new Random();
 			int randomInt = generator.nextInt();
 
-			randomInt = 3;
+//			randomInt = 3;
 
 			log.info("Executing Decision with randomInt = " + randomInt);
 

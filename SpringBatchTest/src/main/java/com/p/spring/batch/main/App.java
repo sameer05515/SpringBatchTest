@@ -1,5 +1,7 @@
 package com.p.spring.batch.main;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -17,6 +19,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @ComponentScan("com.p.spring.batch")
 public class App implements CommandLineRunner {
+
+	private static final Log log = LogFactory.getLog(App.class);
+
 	@Autowired
 	JobLauncher jobLauncher;
 
@@ -34,15 +39,17 @@ public class App implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		JobParameters params1 = new JobParametersBuilder()
-//				.addString("JobID", String.valueOf(System.currentTimeMillis())).addString("Job Name", "First Job")
-//				.toJobParameters();
-//		jobLauncher.run(job1, params1);
+		// JobParameters params1 = new JobParametersBuilder()
+		// .addString("JobID",
+		// String.valueOf(System.currentTimeMillis())).addString("Job Name", "First
+		// Job")
+		// .toJobParameters();
+		// jobLauncher.run(job1, params1);
 
 		JobParameters params2 = new JobParametersBuilder()
 				.addString("JobID", String.valueOf(System.currentTimeMillis())).addString("Job Name", "Second Job")
 				.toJobParameters();
-		JobExecution je2=jobLauncher.run(job2, params2);
-		System.out.println("\n ====== \n\nPremendra je2"+je2+"\n ======== \n\n");
+		JobExecution je2 = jobLauncher.run(job2, params2);
+		log.info("\n ====== \n\nPremendra second job " + je2 + "\n ======== \n\n");
 	}
 }
